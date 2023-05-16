@@ -38,7 +38,7 @@ export class AppService {
         let dataDTO
         try {
             const obj = JSON.parse(JSON.stringify(requestDTO.data))
-            dataDTO = new DataDTO(obj.service, obj.requestName, obj.status , obj.msg , obj.data , obj.time)
+            dataDTO = new DataDTO(obj.service, obj.requestName, obj.status, obj.msg, obj.data, obj.time)
         } catch (e) {
             throw "parsing data error"
         }
@@ -48,7 +48,12 @@ export class AppService {
 
 
     async eventsLogic(dataDTO: DataDTO) {
-        console.log(dataDTO.servise + ', ' + dataDTO.requestName + ', status: ' + dataDTO.status + ', ' + dataDTO.msg + ', ' + dataDTO.time + ' ms, ' + dataDTO.data )
+        if (dataDTO.status == 200) {
+            console.log(dataDTO.servise + ', ' + dataDTO.requestName + ', status: ' + dataDTO.status + ', ' + dataDTO.msg + ', ' + dataDTO.time + ' ms')
+        } else {
+
+            console.log(dataDTO.servise + ', ' + dataDTO.requestName + ', status: ' + dataDTO.status + ', ' + dataDTO.msg + ', ' + dataDTO.time + ' ms, ' + dataDTO.data)
+        }
         return ''
     }
 
