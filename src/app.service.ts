@@ -51,8 +51,7 @@ export class AppService {
         if (dataDTO.status == 200) {
             console.log(dataDTO.servise + ', ' + dataDTO.requestName + ', status: ' + dataDTO.status + ', ' + dataDTO.msg + ', ' + dataDTO.time + ' ms')
         } else {
-
-            console.log(dataDTO.servise + ', ' + dataDTO.requestName + ', status: ' + dataDTO.status + ', ' + dataDTO.msg + ', ' + dataDTO.time + ' ms, ' + dataDTO.data)
+            console.log(dataDTO.servise + ', ' + dataDTO.requestName + ', status: ' + dataDTO.status + ', ' + dataDTO.msg + ', ' + dataDTO.time + ' ms, ' + JSON.stringify(dataDTO.data))
         }
         return ''
     }
