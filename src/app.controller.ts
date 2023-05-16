@@ -9,8 +9,6 @@ export class AppController {
 
     @EventPattern('send_log')
     async saveData(data: any): Promise<ResponseDTO> {
-        console.log('request')
         return await this.appService.monitoringResponser(data)
     }
-
 }
