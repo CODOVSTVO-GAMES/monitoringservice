@@ -49,9 +49,11 @@ export class AppService {
 
     async eventsLogic(dataDTO: DataDTO) {
         if (dataDTO.status == 200) {
-            console.log(dataDTO.servise + ', ' + dataDTO.requestName + ', status: ' + dataDTO.status + ', ' + dataDTO.msg + ', ' + dataDTO.time + ' ms')
+            const str = dataDTO.servise + ', ' + dataDTO.requestName + ', status: ' + dataDTO.status + ', ' + dataDTO.msg + ', ' + dataDTO.time + ' ms'
+            console.log(str)
         } else {
-            console.log(dataDTO.servise + ', ' + dataDTO.requestName + ', status: ' + dataDTO.status + ', ' + dataDTO.msg + ', ' + dataDTO.time + ' ms, ' + JSON.stringify(dataDTO.data))
+            const str = dataDTO.servise + ', ' + dataDTO.requestName + ', status: ' + dataDTO.status + ', ' + dataDTO.msg + ', ' + dataDTO.time + ' ms, ' + JSON.stringify(dataDTO.data)
+            console.log('%c' + str, 'background-color: yellow')
         }
         return ''
     }
