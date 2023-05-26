@@ -25,8 +25,7 @@ export class AppService {
     async eventsHandler(data: any) {
         let dataDTO
         try {
-            const obj = JSON.parse(data)
-            dataDTO = new DataDTO(obj.service, obj.requestName, obj.status, obj.msg, obj.data, obj.time)
+            dataDTO = new DataDTO(data.service, data.requestName, data.status, data.msg, data.data, data.time)
         } catch (e) {
             throw "parsing data error"
         }
