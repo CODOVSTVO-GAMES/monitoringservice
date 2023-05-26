@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { RequestDTO } from './DTO/RequestDTO';
 import { ResponseDTO } from './DTO/ResponseDTO';
 import { DataDTO } from './DTO/DataDTO';
 
@@ -24,20 +23,9 @@ export class AppService {
     }
 
     async eventsHandler(data: any) {
-        let requestDTO;
-        try {
-            requestDTO = new RequestDTO(data.data, data.serverHash)
-        } catch (e) {
-            throw "server DTO bad"
-        }
-
-        if (this.isServerHashBad(requestDTO.serverHash)) {
-            throw "server hash bad"
-        }
-
         let dataDTO
         try {
-            const obj = JSON.parse(JSON.stringify(requestDTO.data))
+            const obj = JSON.parse(data)
             dataDTO = new DataDTO(obj.service, obj.requestName, obj.status, obj.msg, obj.data, obj.time)
         } catch (e) {
             throw "parsing data error"
@@ -57,16 +45,6 @@ export class AppService {
         }
         return ''
     }
-
-    //----------------------------------------------------------
-
-    isServerHashBad(serverHash: string): boolean {
-        if (serverHash == '89969458273-the-main-prize-in-the-show-psychics') {
-            return false
-        }
-        return true
-    }
-
 }
 
 
